@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Vue JS</title>
    </head>
-   <script src='https://unpkg.com/vue/dist/vue.js'></script>
+   <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
    <body>
       <div id="app">
@@ -14,7 +14,19 @@
             {{title}}
          </p>
       </div>
-   </body>
-   <script src='vue-test-js.js'></script>
+      <div id="app2">
+        <span>Change Title</span>
+         <input type="text" v-on:input="changeTitle" />
+         <p>
+            {{title}}
+         </p>
 
+         <span>Change Inner HTML</span>
+         <input type="text" v-on:input="changeHtml">
+         <p id='htmlInside'>
+            {{insideHtml()}}
+         </p>
+      </div>
+   </body>
+   <script src="vue-test-js.js"></script>
 </html>
