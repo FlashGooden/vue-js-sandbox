@@ -10,14 +10,16 @@
    <body>
       <div id="app">
          <input type="text" v-on:input="changeTitle" />
-         <p>
+         <p >
             {{title}}
          </p>
+         <a v-bind:href="google">www.google.com</a>
+         <a v-bind:href="TroyGood">www.troygood.dev</a>
       </div>
       <div id="app2">
         <span>Change Title</span>
          <input type="text" v-on:input="changeTitle" />
-         <p>
+         <p v-once>
             {{title}}
          </p>
 
