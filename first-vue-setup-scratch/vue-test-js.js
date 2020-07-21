@@ -18,7 +18,8 @@ new Vue({
       chopper: "here it go",
       google: 'https://www.google.com',
       google2: 'https://www.google.com',
-      TroyGood: 'https://www.troygood.dev'
+      TroyGood: 'https://www.troygood.dev',
+      troyLink: '<a href="https://www.troygood.dev"> Another way to write links</a>'
    },
    methods: {
       changeTitle: changeTitle,
@@ -39,3 +40,19 @@ new Vue({
       changeHtml: changeHtml
    },
 });
+
+new Vue({
+   el: "#exercise",
+   data: {
+     YOUR_NAME: 'Gary Owens',
+     AGE: '35',
+     wayans: 'https://www.gstatic.com/tv/thumb/tvbanners/184432/p184432_b_v8_aa.jpg',
+     name: 'GARYYYYYY!!!'
+   },
+
+   methods: {
+     randomFloat: ()=> {return parseInt(Math.random() + 1)}
+   }
+
+  })
+   

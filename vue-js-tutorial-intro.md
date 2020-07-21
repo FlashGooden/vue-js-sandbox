@@ -40,17 +40,31 @@ If you need to access methods from such processes like `v-on:` you should have a
 Directives are any piece of code we write in our elements that lets Vue bind something to data. You are also able to write your own directives. Usually the binds are written like `v-on:` or `v-bind:`
 - v-on : onInput{each time key pressed }
 - v-once: does not change initial data passed in, won't update component
-- v-bind:href - takes a string for which data property to fetch dynamically
+- v-bind:href - takes a string for which data property to fetch link dynamically
+- v-bind:src - takes a string for which data property to fetch src dynamically
 ## Interpolation
 
 Vue JS automatically picks up whats in the brackets **'{{ random propertery or method goes in here}} '** whether it's a method or a property. When you create a methods object and call whichever method inside the brackets, it's important that it returns a string to be displayed. You cannot return anything else inside the brackets to be displayed on page if calling a method inside the brackets. Hence calling a function that returns a string, then calling it within your HTML will show the returned string.
 
 ## Binding Link / RAW Html
 
-if you are adding a link to an external address using **a** tags, if your dynamic link is in your Vue data Object, you will need to use a view directive in your html called `v-bind:href`: 
+if you are adding a link to an external address using **a** tags, if your dynamic link is in your Vue data Object, you will need to use a view directive in your html called `v-bind:href` Which will look for the Data property to return the text link or the `v-html` directive which tells VueJS to render HTML (v-html is susceptible to XSS so be careful)
 
 ```
       <div id="app">
          <a v-bind:href="google2">www.google.com</a>
       </div>
+
+```
+or
+```
+  **in html**
+  <p v-html='troyLink'></p>
+
+  **in javascript object**
+  new Vue({
+   el: "#app",
+   data: {
+      troyLink: '<a href="https://www.troygood.dev"> Another way to write links</a>'
+   }
 ```
