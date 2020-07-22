@@ -9,8 +9,9 @@ const changeHtml = function (e) {
    innerThing.innerHTML = e.target.value;
 };
 
-const increase = function (step) {
-  console.log(step)
+const increase = function (event, step) {
+   console.log(event);
+   console.log(step);
    this.Counter += step;
 };
 
@@ -50,8 +51,12 @@ new Vue({
       changeHtml: changeHtml,
       increase: increase,
       updateCoordinates: function (e) {
-        this.coox = e.clientX
-        this.cooy = e.clientY
+         this.coox = e.clientX;
+         this.cooy = e.clientY;
+      },
+      keyUpHandler: function (e) {
+         
+         if (e.key === "d") alert("button Hit!!");
       },
    },
 });
@@ -70,6 +75,5 @@ new Vue({
       randomFloat: () => {
          return parseInt(Math.random() + 1);
       },
-      
    },
 });

@@ -1,7 +1,5 @@
 # STARTING WITH VUE JS
 
-
-
 When working with Vue JS, you can add it to a regular HTML file by instantiating a new Vue object. If you import the library into your HTML using : `<script src='https://unpkg.com/vue/dist/vue.js'></script>`
 
 in your javascript file that will be ran you then need to grab the ID of the div you would like to control under the VueJs library:
@@ -105,17 +103,38 @@ new Vue({
 
 ## Getting event data
 
-When listening to DOM events from within Vue, all events are passed down automatically into your arguments. If you wanted to figure out what the cordinates are from a mouse move you would first assign a component to listen to that event, then you can display it by tying the values to somewhere in your Vue instance object. Just as in regular javascript all DOM events are passed down in the argument for the event handler. 
+When listening to DOM events from within Vue, all events are passed down automatically into your arguments. If you wanted to figure out what the cordinates are from a mouse move you would first assign a component to listen to that event, then you can display it by tying the values to somewhere in your Vue instance object. Just as in regular javascript all DOM events are passed down in the argument for the event handler.
 
 ## Passing Arguments
 
-when using directives, not only can you call a function by its name, but you can add parentesis to pass down arguments to the function being called. 
+when using directives, not only can you call a function by its name, but you can add parentesis to pass down arguments to the function being called.
 
 ```
 <button v-on:click='increase(2)'>Click on me!!!</button>
 ```
 
+If you need to pass down an argument, alongside with the event please use the special keyword `$event` inside your html component.
 
+```
+<button v-on:click='increase(2, $event)'>Click on me!!!</button>
+```
 
+## Modifying Events
 
+When calling a directive, you can always stop DOM event bubbling to parent objects by using stopPropogation or preventDefault. VueJS also comes with modifiers for events in where you can get these method calls right inside your directives. You simply put a **'.'** notator and call the modifier you need. 2 of the most popular ones are `.stop` for stop propogation, and `.prevent` for prevent default. You can even chain these modifiers. In the following example, the mousemove event will not be triggered when hovering over the **span**
+
+```
+<p v-on:mousemove='updateCoordinates'>
+ Coordinate X:  {{coox}} Coordinate Y: {{cooy}} - <span v-on:mousemove.stop.prevent > Do not update on here </span>
+</p>
+```
+you can also add modifiers on keys, for instance if you want to know if the keyUp event happned on the "enter" button, or to perform something once a letter that represents the modifier is pressed. 
+
+```
+**run the function after 'd' key is released**
+ <input v-on:keyup.d='keyUpHandler' type="text">
+
+  **run the function after the 'enter' key is released**
+ <input v-on:keyup.enter='keyUpHandler' type="text">
+```
 
