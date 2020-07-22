@@ -9,8 +9,9 @@ const changeHtml = function (e) {
    innerThing.innerHTML = e.target.value;
 };
 
-const increase = function (e) {
-   this.Counter++;
+const increase = function (step) {
+  console.log(step)
+   this.Counter += step;
 };
 
 console.log("hello");
@@ -38,6 +39,8 @@ new Vue({
       title: "Who page is this2 !",
       chopper: "here it go chopper",
       Counter: 0,
+      coox: 0,
+      cooy: 0,
    },
    methods: {
       changeTitle: changeTitle,
@@ -46,6 +49,10 @@ new Vue({
       },
       changeHtml: changeHtml,
       increase: increase,
+      updateCoordinates: function (e) {
+        this.coox = e.clientX
+        this.cooy = e.clientY
+      },
    },
 });
 
@@ -63,5 +70,6 @@ new Vue({
       randomFloat: () => {
          return parseInt(Math.random() + 1);
       },
+      
    },
 });

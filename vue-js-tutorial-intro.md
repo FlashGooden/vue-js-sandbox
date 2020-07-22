@@ -1,6 +1,6 @@
-## STARTING WITH VUE JS
+# STARTING WITH VUE JS
 
----
+
 
 When working with Vue JS, you can add it to a regular HTML file by instantiating a new Vue object. If you import the library into your HTML using : `<script src='https://unpkg.com/vue/dist/vue.js'></script>`
 
@@ -35,6 +35,8 @@ The Vue JS library that is instantiated will use the **'el'** property to look f
 Vue JS also has a **'data'** property, this is a javascript object that will take in arguments / values and input them into your HTML template where it finds the proper double bracket name
 
 If you need to access methods from such processes like `v-on:` you should have an object called **"methods"** located in your Vue Properties. Be careful with using arrow functions if you need to access **this** keyword. **this** will refer to top level data including the **Vue Data Object**.
+
+# INTERACTING WITH THE DOM
 
 ## Directives
 
@@ -74,7 +76,7 @@ or
    }
 ```
 
-## Linking button to method
+## Listening to events
 
 the directive `v-on` can be linked to any DOM event. VueJS makes it allowable to have any component of HTML listen to an event. If you need to make an **onclick** handler just put the v-on directive in the html property that will link to the method in your VueJS instance.
 
@@ -100,3 +102,20 @@ new Vue({
    },
 });
 ```
+
+## Getting event data
+
+When listening to DOM events from within Vue, all events are passed down automatically into your arguments. If you wanted to figure out what the cordinates are from a mouse move you would first assign a component to listen to that event, then you can display it by tying the values to somewhere in your Vue instance object. Just as in regular javascript all DOM events are passed down in the argument for the event handler. 
+
+## Passing Arguments
+
+when using directives, not only can you call a function by its name, but you can add parentesis to pass down arguments to the function being called. 
+
+```
+<button v-on:click='increase(2)'>Click on me!!!</button>
+```
+
+
+
+
+
