@@ -128,7 +128,8 @@ When calling a directive, you can always stop DOM event bubbling to parent objec
  Coordinate X:  {{coox}} Coordinate Y: {{cooy}} - <span v-on:mousemove.stop.prevent > Do not update on here </span>
 </p>
 ```
-you can also add modifiers on keys, for instance if you want to know if the keyUp event happned on the "enter" button, or to perform something once a letter that represents the modifier is pressed. There are many modifiers that can be used on any key press. 
+
+you can also add modifiers on keys, for instance if you want to know if the keyUp event happned on the "enter" button, or to perform something once a letter that represents the modifier is pressed. There are many modifiers that can be used on any key press.
 
 ```
 **run the function after 'd' key is released**
@@ -136,5 +137,30 @@ you can also add modifiers on keys, for instance if you want to know if the keyU
 
   **run the function after the 'enter' key is released**
  <input v-on:keyup.enter='keyUpHandler' type="text">
+
+ ** run an inline function right after directive using $event**
+  <input v-on:keyup='value = $event.target.value' type="text">
 ```
 
+## Writing Javascript code in templates
+
+Whether you are writing code after a directive, or inside curly braces, VueJS allows us to write code that will run as long as it is an expression. No for loops, but you can use terenary statements inside curly braces or right after a directive instead of function calls.
+
+```
+        <input v-on:keyup='value = $event.target.value' type="text">
+
+        <p>{{ value  + 2}}</p>
+```
+
+## Two way binding 
+
+We can two way bind an HTML element using the `v-model` directive. Using this, we can tie an input element to a variable/property in our Vue instance
+
+```
+        <input type="text" v-model='twoWay'>
+** Both of these refer to the twoWay key in the Vue Instance **
+         <p id='htmlInside'>
+            {{insideHtml()}}
+            {{twoWay}}
+         </p>
+```

@@ -8,8 +8,8 @@ new Vue({
                 alert('message button was clicked on')
             },
             keyDownHandler: function (e) {
-                console.log(e)
-                this.value = e.target.value
+                console.log(e.target.value)
+                this.value = e.target.value + e.key
             },
             onEnterHandler: function (e) {
                 console.log(e.target.value)

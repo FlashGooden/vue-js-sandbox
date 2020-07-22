@@ -42,11 +42,12 @@ new Vue({
       Counter: 0,
       coox: 0,
       cooy: 0,
+      twoWay: '',
    },
    methods: {
       changeTitle: changeTitle,
       insideHtml: function () {
-         return this.chopper;
+         return this.twoWay;
       },
       changeHtml: changeHtml,
       increase: increase,

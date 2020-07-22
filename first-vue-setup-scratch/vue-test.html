@@ -25,9 +25,10 @@
          </p>
 
          <span>Change Inner HTML</span>
-         <input type="text" v-on:input="changeHtml">
+         <input type="text" v-model='twoWay'>
          <p id='htmlInside'>
             {{insideHtml()}}
+            {{twoWay}}
          </p>
          <button v-on:click='increase($event, 2)'>Click on me!!!</button>
          <p>{{Counter}}</p>
