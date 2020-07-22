@@ -128,7 +128,7 @@ When calling a directive, you can always stop DOM event bubbling to parent objec
  Coordinate X:  {{coox}} Coordinate Y: {{cooy}} - <span v-on:mousemove.stop.prevent > Do not update on here </span>
 </p>
 ```
-you can also add modifiers on keys, for instance if you want to know if the keyUp event happned on the "enter" button, or to perform something once a letter that represents the modifier is pressed. 
+you can also add modifiers on keys, for instance if you want to know if the keyUp event happned on the "enter" button, or to perform something once a letter that represents the modifier is pressed. There are many modifiers that can be used on any key press. 
 
 ```
 **run the function after 'd' key is released**
