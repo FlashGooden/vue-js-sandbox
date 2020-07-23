@@ -42,8 +42,23 @@ new Vue({
       Counter: 0,
       coox: 0,
       cooy: 0,
+      anotherOne: 23,
       twoWay: '',
    },
+   computed: {
+     output: function () {
+       console.log('ran computed once')
+       
+       return this.anotherOne
+     }
+   },
+   watch: {
+    anotherOne: function() {
+      setTimeout(()=>{this.anotherOne = 0},2000)
+      console.log(this.anotherOne)
+    }
+   },
+
    methods: {
       changeTitle: changeTitle,
       insideHtml: function () {
@@ -59,6 +74,10 @@ new Vue({
          
          if (e.key === "d") alert("button Hit!!");
       },
+      updateCompute: function () {
+        console.log(this.anotherOne)
+        this.anotherOne += 1
+      }
    },
 });
 

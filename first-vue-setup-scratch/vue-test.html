@@ -29,6 +29,8 @@
          <p id='htmlInside'>
             {{insideHtml()}}
             {{twoWay}}
+            <p>this the output {{output}}</p>  
+            <button v-on:click='anotherOne +=1'> raise computed property value by one</button>
          </p>
          <button v-on:click='increase($event, 2)'>Click on me!!!</button>
          <p>{{Counter}}</p>

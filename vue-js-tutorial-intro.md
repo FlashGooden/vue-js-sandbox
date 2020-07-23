@@ -164,3 +164,53 @@ We can two way bind an HTML element using the `v-model` directive. Using this, w
             {{twoWay}}
          </p>
 ```
+
+## Computed Properties & Watched Properties
+
+When VueJS renders elements to the page, if something in the data object changes it will re-render the component and rerun any method calls / regrab any data properties. There may be times where we do not want to update sections of our HTML/Code that will be expensive (having to rerun a function again). There is another **key** we can add to our Vue instance which will cache certain code, and not have it dependant on our data properties being refreshed. By using the `computed` key we can have elements that don't update unless the dependency / value of the data is changed. 
+
+```
+** HTML **
+        <p id='htmlInside'>
+            <p>this the output {{output}}</p>  
+            <button v-on:click='anotherOne +=1'> raise computed property value by one</button>
+         </p>
+
+** JS **
+new Vue({
+   el: "#app2",
+   data: {
+      anotherOne: 23,  <---- Computed function will run only when this changes
+   },
+   
+   computed: {
+     output: function () {
+       console.log('ran computed once')
+       
+       return this.anotherOne
+     }
+   },
+
+```
+You can also use the `watch` key to run a function once a certain Vue object value changes. It is preferred to use computed property way. 
+```
+** HTML **
+        <p id='htmlInside'>
+            <p>this the output {{output}}</p>  
+            <button v-on:click='anotherOne +=1'> raise computed property value by one</button>
+         </p>
+
+** JS **
+new Vue({
+   el: "#app2",
+   data: {
+      anotherOne: 23,  <---- Watch function will run only when this changes
+   },
+   
+watch: {
+    anotherOne: function() {
+      setTimeout(()=>{this.anotherOne = 0},2000)
+      console.log(this.anotherOne)
+    }
+   }
+```
