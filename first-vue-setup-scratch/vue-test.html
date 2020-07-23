@@ -32,10 +32,10 @@
             <p>this the output {{output}}</p>  
             <button v-on:click='anotherOne +=1'> raise computed property value by one</button>
          </p>
-         <button v-on:click='increase($event, 2)'>Click on me!!!</button>
+         <button @click='increase($event, 2)'>Click on me!!!</button>
          <p>{{Counter}}</p>
          <p v-on:mousemove='updateCoordinates'> Coordinate X:  {{coox}} Coordinate Y: {{cooy}}- <span v-on:mousemove.stop.prevent>Do not update on here</span></p> 
-         <input v-on:keyup.d='keyUpHandler' type="text">
+         <input @keyup.d='keyUpHandler' type="text">
       </div>
    </body>
    <script src="vue-test-js.js"></script>

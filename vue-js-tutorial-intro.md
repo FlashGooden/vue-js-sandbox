@@ -214,3 +214,26 @@ watch: {
     }
    }
 ```
+
+## Shorthand for writing directives 
+
+There are certain shorthand commands you can use in place of `v-on` or `v-bind`. If you want to replace `v-on` use an **&** symbol, and if you want to replace `v-bind` use the **:** symbol.
+
+```
+        <input @keyup='value = $event.target.value' type="text">
+        <button @click='increase($event, 2)'>Click on me!!!</button>
+        <input @keyup.d='keyUpHandler' type="text">
+
+
+```
+
+## style HTML dynamically with CSS
+
+If you want to apply classes onto HTML dynamically you can use another directive called `:class` to check against a vue instance Property. You can give the name of the class to be added based on if something is true or false
+
+```
+** the html below will add the brown class if the 'addRed' data attribute is true, or the 'testingMethod' value is true. 
+
+ <div class='boxed' @click='addRed = !addRed' :class='{brown: addRed}'></div>
+  <div class='boxed' :class='{brown: testingMethod}'></div>
+```

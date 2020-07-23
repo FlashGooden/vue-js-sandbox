@@ -1,0 +1,14 @@
+.boxed {
+  width: 40px;
+  height: 40px;
+  background-color: gray;
+  margin: 5px;
+}
+
+.brown {
+  background-color: brown;
+}
+
+.blue {
+  background-color: blue
+}
