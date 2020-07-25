@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-<script src="index-vue-conditional-list.js"></script>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+      <title>Document</title>
+   </head>
+   <body>
+      <div id='app'>
+         <h1 v-if='isTrue'>hello from conditionals with if directive</h1>
+         <h3 v-else>I will show if the Main heading is not there</h3>
+         <p @click='isTrue = !isTrue'>click me to change if heading show!!!</p>
+      </div>
+   </body>
+   <script src="index-vue-conditional-list.js"></script>
 </html>

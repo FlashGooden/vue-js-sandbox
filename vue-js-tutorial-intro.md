@@ -349,5 +349,22 @@ computed: {
 
 # Using Conditionals & Rendering Lists in VueJS
 
+## using v-if & v-else
 
+When making a html element, you can have it be shown if the property in the Vue instance is true. We write the `v-if` statement alongside with which instance property we need to match it against to see if the element should show. If you place a `v-else` statement right after a `v-if`, that element will render if the `v-if` property is false. 
+
+```
+** JS ** 
+el:'#app',
+  data: {
+    isTrue: true
+  }
+
+** HTML ** 
+<div id='app'>
+   <h1 v-if='isTrue'>hello from conditionals with if directive</h1> <--- will show if isTrue = true
+   <h3 v-else>I will show if the Main heading is not there</h3> <--- will show if isTrue = false
+   <p @click='isTrue = !isTrue'>click me to change if heading show!!!</p>
+</div>
+```
 
