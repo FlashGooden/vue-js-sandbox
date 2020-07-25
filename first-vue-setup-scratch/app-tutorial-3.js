@@ -4,11 +4,18 @@ new Vue({
             value: 0,
             // result: 'still not done'
             addRed: false,
-            testingMethod: true
+            testingMethod: true,
+            namedColor: 'pink',
+            styleWidth: '50px'
         },
         computed: {
             result: function () {
                return  this.value !== 37 ? 'still not done' : 'done'
+            },
+            divClasses: function () {
+                return {
+                    blue: this.testingMethod
+                }
             }
         },
         watch: {

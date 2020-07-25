@@ -29,7 +29,11 @@
 
     <div class='boxed' @click='addRed = !addRed' :class='{brown: addRed}'></div>
     <div class='boxed' :class='{brown: testingMethod}'></div>
-    <div class='boxed' :class='{blue: testingMethod}'></div>
+    <div class='boxed' :class='divClasses'></div>
+    <div class='boxed' :style='{width: styleWidth}' :class='[namedColor, {brown: addRed}]'></div>
+    <input type="text" v-model='namedColor' value='change color'>
+    <input type="text" v-model='styleWidth' value='change width'>
+
 
 </div>
 </body>

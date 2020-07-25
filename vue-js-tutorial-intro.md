@@ -232,8 +232,122 @@ There are certain shorthand commands you can use in place of `v-on` or `v-bind`.
 If you want to apply classes onto HTML dynamically you can use another directive called `:class` to check against a vue instance Property. You can give the name of the class to be added based on if something is true or false
 
 ```
+** CSS **
+.boxed {
+  width: 40px;
+  height: 40px;
+  background-color: gray;
+  margin: 5px;
+}
+
+.brown {
+  background-color: brown;
+}
+
+.blue {
+  background-color: blue
+}
+
 ** the html below will add the brown class if the 'addRed' data attribute is true, or the 'testingMethod' value is true. 
 
  <div class='boxed' @click='addRed = !addRed' :class='{brown: addRed}'></div>
   <div class='boxed' :class='{brown: testingMethod}'></div>
 ```
+
+You can also pass the objects handed to `:class` into your vue instance, and represent it in computed properties. 
+
+```
+** CSS **
+.boxed {
+  width: 40px;
+  height: 40px;
+  background-color: gray;
+  margin: 5px;
+}
+
+.brown {
+  background-color: brown;
+}
+
+.blue {
+  background-color: blue
+}
+** HTML **
+    <div class='boxed' :class='divClasses'></div>
+
+** JS ** 
+new Vue({
+        el: '#exercise',
+        data: {
+            testingMethod: true
+        },
+        computed: {
+            divClasses: function () {
+                return {
+                    blue: this.testingMethod
+                }
+            }
+```
+
+classes can even be dynamically outputted using an input field if you use the `v-model` directive, and also when using the `:class` directive, you can also pass in array in the quotations to represent multiple CSS classes that you may need to add. 
+
+```
+** JS **
+new Vue({
+        el: '#exercise',
+        data: {
+            value: 0,
+            // result: 'still not done'
+            addRed: false, <------ if true, the directive will find the class and use it 
+            testingMethod: true,
+            namedColor: 'pink'
+        }
+
+** HTML **
+<div class='boxed' :class='namedColor'></div>
+<div class='boxed' :class='[namedColor, {brown: addRed}]'></div>
+<input type="text" v-model='namedColor'>
+
+```
+
+If you want to apply styles directly inline using values from the vue instance, use the `:style` directive alongside with the property you want to style, and then place the variable used in the Vue instance. If you add an input with a `v-model` you can control the style dynamically. 
+
+```
+** JS **
+...(Vue instance)
+ data: {
+            value: 0,
+            // result: 'still not done'
+            addRed: false,
+            testingMethod: true,
+            namedColor: 'pink',
+            styleWidth: '50px' <------ this will get passed down into :style value
+        },
+** HTML **
+    <div class='boxed' :style='{width: styleWidth}' :class='[namedColor, {brown: addRed}]'></div>
+    <input type="text" v-model='styleWidth'>
+
+```
+
+If you want to set a whole object for styling, use a computed property to return a object with all your styles in it. 
+
+```
+** JS **
+data: {
+  chooseColor: 'pink',
+  width: 100
+}
+computed: {
+  myStyles: function () {
+    return {
+      backgroundColor: this.chooseColor
+      width: this.chooseWidth + 'px'
+    }
+  }
+}
+```
+
+# Using Conditionals & Rendering Lists in VueJS
+
+
+
