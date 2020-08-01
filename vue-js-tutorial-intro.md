@@ -368,3 +368,29 @@ el:'#app',
 </div>
 ```
 
+## using a template for v-if & v-else
+
+sometimes you may not want to use a `div` to display your conditional elements, or you may want to group a bunch of elements together. Another way to list elements conditionally is to use the `template` tag and then encapsualte the rest of your HTML. 
+
+```
+** JS **
+data: {
+    isTrue: true,
+    templateTrue: false
+  }
+
+  ** HTML **
+ <template v-if='templateTrue'>
+          <div>
+            <p>
+              showing conditionals inside the element using Template
+            </p>
+          </div>
+  </template>
+
+```
+
+## using v-for 
+
+you will use `v-for` when it comes to lists and outputting anything iterable. 
+

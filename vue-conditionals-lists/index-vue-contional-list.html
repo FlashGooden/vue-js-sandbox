@@ -11,6 +11,19 @@
          <h1 v-if='isTrue'>hello from conditionals with if directive</h1>
          <h3 v-else>I will show if the Main heading is not there</h3>
          <p @click='isTrue = !isTrue'>click me to change if heading show!!!</p>
+
+         <template v-if='templateTrue'>
+          <div>
+            <p>
+              showing conditionals inside the element using Template
+            </p>
+          </div>
+         </template>
+         <button @click='templateTrue = !templateTrue'>click to show template</button>
+
+         <ul>
+           <li v-for='fruit in fruitList'>{{ fruit }}</li>
+         </ul>
       </div>
    </body>
    <script src="index-vue-conditional-list.js"></script>

@@ -1,0 +1,130 @@
+(def determine-order (tasks, chosen-tasks)
+  var allTaskList {}
+  var chosenTaskList {}
+  var finalArray []
+
+null)
+
+;; Examples:
+
+(var example-tasks
+
+[{task "make a sandwich", depends ["buy groceries"]}
+
+{task "buy groceries", depends ["go to the store"]}
+
+{task "go to the store", depends []}])
+
+;; The following should print:
+
+;; [ 'go to the store', 'buy groceries', 'make a sandwich' ]
+
+(console.log (determine-order example-tasks ["make a sandwich"]))
+
+;; The following should also print:
+
+;; [ 'go to the store', 'buy groceries', 'make a sandwich' ]
+
+(console.log (determine-order example-tasks ["buy groceries" "make a sandwich"]))
+
+;; Write any additional test cases which demonstrate the correctness of your
+
+;; solution.
+
+;; Please also write a description of how your algorithm works.
+
+;; write a function that takes a task, and returns all children tasks that fall behind that task 
+
+(def determine-order (tasks, chosen-tasks)
+  (var allTaskList {})
+  (var chosenTaskList {})
+  (var finalArray [])
+
+(each task [... chosenTasks ]  (set chosenTaskList task task))
+
+(each item [...tasks] 
+(console.log (get item.task))
+(if (get allTaskList item.task)  (console.log 'hi))
+
+(if (!(get allTaskList item.task)) (console.log 'nothere))
+)
+
+
+
+chosenTaskList)
+
+(var example-tasks
+
+[{task "make a sandwich", depends ["buy groceries"]}
+
+{task "buy groceries", depends ["go to the store"]}
+
+{task "go to the store", depends []}])
+
+(console.log (determine-order example-tasks ["make a sandwich"]))
+
+-----------
+
+(def determine-order (tasks, chosen-tasks)
+
+  (var allTaskList {})
+  (var chosenTaskList {})
+  (var finalArray [])
+
+  (each task [... chosenTasks ]  (set chosenTaskList task task))
+
+  (each item [...tasks] 
+     
+    (when (get allTaskList item.task) 
+        (when (>= item.depends.length 1)
+          (set allTaskList (first item.depends) {name (first item.depends) child [] print print pawn false parent []})
+          (.push (get allTaskList item.task 'child) (get allTaskList (first item.depends)))
+              (when (or (=  (get allTaskList item.task 'pawn) true) (get chosenTaskList item.task)) 
+                  
+                  (when (get allTaskList (first item.depends)) 
+                  
+                      (assign (get allTaskList (first item.depends))true ) (delete ( get chosenTaskList (first item.depends)))))     
+        ))
+    (when (not (get allTaskList item.task))
+
+      (do 
+      
+      (set allTaskList item.task {name item.task child [] print print pawn false parent []})
+                  
+        (when (>= item.depends.length  1) 
+            (set allTaskList (first item.depends)  {name (first item.depends) child [] print print pawn false parent []} ) 
+
+            (.push (get allTaskList item.task 'child)  (get allTaskList (first item.depends)))
+
+              (when (or (=  (get allTaskList item.task 'pawn) true) (get chosenTaskList item.task)) 
+                  
+                  (when (get allTaskList (first item.depends)) 
+                  
+                      (assign (get allTaskList (first item.depends) 'pawn)true ) (delete ( get chosenTaskList (first item.depends)) )))                          
+            ))
+        )
+)
+
+
+  
+
+
+(.print (get allTaskList (first (keys chosenTaskList)))finalArray))
+
+(def print (finalArray)
+    (.push finalArray this.name)
+      (when (>=  this.child.length 1) (.print (first this.child) finalArray))
+    
+    finalArray
+)
+
+(var example-tasks
+
+[{task "make a sandwich", depends ["buy groceries"]}
+
+{task "buy groceries", depends ["go to the store"]}
+
+{task "go to the store", depends []}])
+
+(console.log (determine-order example-tasks ["make a sandwich"]))
+
