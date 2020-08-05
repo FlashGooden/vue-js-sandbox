@@ -3,7 +3,9 @@ const newVue = new Vue({
   data: {
     isTrue: true,
     templateTrue: false,
-    fruitList: ['apples', 'oranges', 'peaches']
+    fruitList: ['apples', 'oranges', 'peaches'], 
+    peopleObject: [{name: 'max', age: '24', occupation: 'web developer'},
+    {name: 'troy', age: 35, occupation: 'Front End Developer'}]
   }
 
 })

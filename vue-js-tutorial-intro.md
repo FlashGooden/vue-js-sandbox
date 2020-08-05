@@ -392,5 +392,127 @@ data: {
 
 ## using v-for 
 
-you will use `v-for` when it comes to lists and outputting anything iterable. 
+you will use `v-for` when it comes to lists and outputting anything iterable. After writing the directive you then place the name of variable, and the name of iterable list that you will be parsing. If you want to grab the index, just encapsulate the variable name in parentheses with the variable you will be using for the index. If you are going to use multiple non-nested elements then wrap the elements in a template tag. 
 
+```
+** JS ** 
+data: {
+    isTrue: true,
+    templateTrue: false,
+    fruitList: ['apples', 'oranges', 'peaches']
+  }
+
+** HTML ** 
+ <li v-for='(fruit, index) in fruitList'>{{ `this ${fruit} has an index of ${index}` }}</li>
+ 
+
+ ** Template **
+
+ <template v-for='(fruit, index) in fruitList'>
+          <li >{{ `this ${fruit} is in its own element` }}</li>
+          <li >{{ `this ${index} is in its own element` }}</li>
+  </template>
+
+```
+
+When looping through objects you can also use `v-for` , and if nested you can use another `v-for` inside your main element to break down the object further. 
+
+```
+** JS **
+data: {
+    isTrue: true,
+    fruitList: ['apples', 'oranges', 'peaches'], 
+    peopleObject: [{name: 'max', age: '24', occupation: 'web developer'},
+    {name: 'troy', age: 35, occupation: 'Front End Developer'}]
+  }
+** HTML **
+ <ul>
+           <li v-for='person in peopleObject'>
+             <div v-for='(data, key, index) in person'>{{key}}: {{data}}</div>
+           </li>
+         </ul>
+
+```
+
+If you want to loop through a set of numbers you can also use the `v-for` directive with a number range. 
+
+```
+        <span v-for='n in 10'>
+            {{n}}   <----------- n will represent 1 - 10 
+         </span>
+
+```
+
+When you update a list in VueJS it has no problem appending the item to the list in your data object. There may be some buggy behavior tho if you don't keep track of items properly. If you want to make sure VueJS is tracking not only the item in a list, but it's actual memory value properly, then bind a key to the element using the `:key`or `v-bind` directive. If you can use an ID instead of an index this will help the item be sorted even better. 
+
+```
+          <ul>
+           <li v-for='(fruit, index) in fruitList' :key='fruit + index'>{{ `this ${fruit} has an index of ${index}` }}</li>
+         </ul>
+```
+
+## Understanding the VueJS instance
+
+Please note that you can attach multiple Vue instances to multiple elements in your HTML. If one element has a #ID that the vue instance picks up that reference, and you can pretty much have a bunch of widgets / business logic in their own VueJS containers. 
+
+```
+new Vue({
+  el:'#app1',
+  data: {
+  title: 'Who page is this!'
+
+  }
+
+ })
+
+ new Vue({
+  el:'#app2',
+  data: {
+  title: 'This is the second page title'
+
+  }
+
+ })
+```
+The VueJS instance can also be accessed from the outside once you pass it as a variable name. VueJs Proxies all of the methods on the root as well so we can access one VueJs methods from another method. 
+
+```
+var VM1 = new Vue({
+  el:'#app',
+  data: {
+  title: 'Who page is this!'
+
+  }
+
+ })
+
+ var VM2 = new Vue({
+  el:'#app',
+  data: {
+  title: 'Second VM Title'
+
+  }
+
+ })
+```
+
+Because we can access the VueJs instance from outside the object itself, be aware that if you need to make reference to something from inside that instance try to use the `$ref` property. Whatever HTML elements that you place a `ref=` on will be pushed onto the return of `$ref`, from there you can change that ref innerHTML or even just access ceratin properties from it. be careful tho, when accessing things from outside the VueJS instance, it may sometimes be overwritten because you are technically writing to the DOM from outside of VueJS. If the VueJS instance has a re-render, it will be referencing itself once again when it comes to updating things under the umbrella of it's instance. 
+
+```
+** HTML **
+<div>
+  <p ref='outsideProperty'>we can reference this element from outside <p>
+<div>
+
+** JS ** 
+var VM1 = new Vue({
+  el:'#app',
+  data: {
+  title: 'Who page is this!'
+
+  }
+
+ })
+
+ console.log(VM1.$ref.outsideProperty) <----------------- will return the 'p' tag as a reference from outside VueJS instance
+```

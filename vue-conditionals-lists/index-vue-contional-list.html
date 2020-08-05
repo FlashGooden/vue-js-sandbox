@@ -20,10 +20,20 @@
           </div>
          </template>
          <button @click='templateTrue = !templateTrue'>click to show template</button>
+         <button @click='fruitList.push(`hi`)' >add fruit to list</button>
+         <ul>
+           <li v-for='(fruit, index) in fruitList' :key='fruit + index'>{{ `this ${fruit} has an index of ${index}` }}</li>
+         </ul>
 
          <ul>
-           <li v-for='fruit in fruitList'>{{ fruit }}</li>
+           <li v-for='person in peopleObject'>
+             <div v-for='(data, key, index) in person'>{{key}}: {{data}}</div>
+           </li>
          </ul>
+
+         <span v-for='n in 10'>
+            {{n}}
+         </span>
       </div>
    </body>
    <script src="index-vue-conditional-list.js"></script>
